@@ -1,5 +1,35 @@
+// Get data into inspector console
+function init() {
+    d3.json("samples.json").then(function (data) {
+        console.log("sample.json", data);
+        let dropdown = d3.select('#SelDataset');
+        data.names.forEach((name) => {
+            dropdown.append('option').text(name).property('value', name);
+        });
+        const firstSample = data.names[0];
+        buildChart(firstSample);
+        demo(firstSample);
+    });
+
+    function optionChanged(newSample) {
+        chart(newSample)
+        demo(newSample)
+    }
+}
+// Get Demographics
+function demo(sample) {
+    d3.json("samples.json").then((data) => {
+        let metadata = data.metadata;
+        let subject = metadata.filter((sampleobject) =>
+        sampleobject.id == sample)[0];
+        let demoinfobox = d3.select("#sample=metadata");
+        demoinfobox.html();
+        Object.entries(subject).forEach(([key, value]) => {
+            demoinfobox.append("h5").text('${key}: ${value}');
+        });
+
 // Initialize page with default plot
-function chart(sample) {
+function buildChart(sample) {
     d3.json("samples.json").then((data) => {
         let samples = data.samples;
         let sample_data = samples.filter(
@@ -51,17 +81,7 @@ Plotly.newPlot("bubble", data1, bubble_layout);
 });
 }
 
-// Get Demographics
-function demo(sample) {
-    d3.json("samples.json").then((data) => {
-        let metadata = data.metadata;
-        let subject = metadata.filter((sampleobject) =>
-        sampleobject.id == sample)[0];
-        let demoinfobox = d3.select("#sample=metadata");
-        demoinfobox.html();
-        Object.entries(subject).forEach(([key, value]) => {
-            demoinfobox.append("h5").text('${key}: ${value}');
-        });
+
 
 //Create Gauge
 
@@ -100,21 +120,6 @@ function demo(sample) {
     });
 }
 
-// Get data into inspector console
 
-function init() {
-    d3.json("samples.json").then(function (data) {
-        console.log('/data/sample.json', data);
-        let dropdown = d3.select('#SelDataset');
-        data.names.forEach((name) => {
-            dropdown.append('option').text(name).property('value', name);
-        });
-        const first_sample = data.names[0];
-        chart(first_sample);
-        demo(first_sample);
-    });
-}
-    function change_option(new_sample) {
-        chart(new_sample)
-        demo(new_sample)
-    }
+
+
