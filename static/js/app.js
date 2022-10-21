@@ -1,8 +1,6 @@
-sample_json = 
-
 // Initialize page with default plot
 function chart(sample) {
-    d3.json('samples.json').then((data) => {
+    d3.json("samples.json").then((data) => {
         let samples = data.samples;
         let sample_data = samples.filter(
             (sampleobject) => sampleobject.id == sample)[0];
@@ -55,7 +53,7 @@ Plotly.newPlot("bubble", data1, bubble_layout);
 
 // Get Demographics
 function demo(sample) {
-    d3.json('samples.json').then((data) => {
+    d3.json("samples.json").then((data) => {
         let metadata = data.metadata;
         let subject = metadata.filter((sampleobject) =>
         sampleobject.id == sample)[0];
@@ -105,7 +103,7 @@ function demo(sample) {
 // Get data into inspector console
 
 function init() {
-    d3.json('samples.json').then(function (data) {
+    d3.json("samples.json").then(function (data) {
         console.log('/data/sample.json', data);
         let dropdown = d3.select('#SelDataset');
         data.names.forEach((name) => {
