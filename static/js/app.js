@@ -81,40 +81,40 @@ function buildChart(sample) {
 
 //Create Gauge
 
-let gauge_data = [
-    {
-        domain: { x: [0, 5], y: [0, 1] },
-        value: sample_data.wfreq,
-        text: sample_data.wfreq,
-        type: 'indicator',
-        mode: 'gauge+number',
-        delta: { reference: 10 },
-        gauge: {
-            axis: { range: [null, 9] },
-            steps: [
-                { range: [0, 1], color: 'rgb(248, 243, 236)' },
-                { range: [1, 2], color: "rgb(239, 234, 220)" },
-                { range: [2, 3], color: "rgb(230, 225, 205)" },
-                { range: [3, 4], color: "rgb(218, 217, 190)" },
-                { range: [4, 5], color: "rgb(204, 209, 176)" },
-                { range: [5, 6], color: "rgb(189, 202, 164)" },
-                { range: [6, 7], color: "rgb(172, 195, 153)" },
-                { range: [7, 8], color: "rgb(153, 188, 144)" },
-                { range: [8, 9], color: "rgb(132, 181, 137)" },
-            ],
-        },
-    },
-];
+//let gauge_data = [
+    //{
+       // domain: { x: [0, 5], y: [0, 1] },
+      //  value: sample_data.wfreq,
+       // text: sample_data.wfreq,
+       // type: 'indicator',
+       // mode: 'gauge+number',
+       // delta: { reference: 10 },
+      //  gauge: {
+         //   axis: { range: [null, 9] },
+           // steps: [
+            //    { range: [0, 1], color: 'rgb(248, 243, 236)' },
+            //    { range: [1, 2], color: "rgb(239, 234, 220)" },
+            //    { range: [2, 3], color: "rgb(230, 225, 205)" },
+             //   { range: [3, 4], color: "rgb(218, 217, 190)" },
+             //   { range: [4, 5], color: "rgb(204, 209, 176)" },
+              //  { range: [5, 6], color: "rgb(189, 202, 164)" },
+             //   { range: [6, 7], color: "rgb(172, 195, 153)" },
+             //   { range: [7, 8], color: "rgb(153, 188, 144)" },
+             //   { range: [8, 9], color: "rgb(132, 181, 137)" },
+           // ],
+       // },
+   // },
+//];
 
-let gauge_layout = {
-    title: '<b>Belly Button Washing Frequency</b> <br>Scrubs Per Week',
-    width: 300,
-    height: 300
-};
+//let gauge_layout = {
+//    title: '<b>Belly Button Washing Frequency</b> <br>Scrubs Per Week',
+//    width: 300,
+ //   height: 300
+//};
 
-Plotly.newPlot("gauge", gauge_data, gauge_layout);
+//Plotly.newPlot("gauge", gauge_data, gauge_layout);
     
-}
+//}
 
 // Get data into inspector console
 function init() {
