@@ -1,16 +1,3 @@
-// Get data into inspector console
-function init() {
-    let dropdown = d3.select('#SelDataset');
-    d3.json("samples.json").then(function (data) {
-        console.log("samples.json", data);
-        data.names.forEach((name) => {
-            dropdown.append('option').text(name).property('value', name);
-        });
-        const firstSample = data.names[0];
-        buildChart(firstSample);
-        buildMetadata(firstSample);
-    });
-}
 // Get Demographics
 function buildMetadata(sample) {
     d3.json("samples.json").then((data) => {
@@ -35,24 +22,16 @@ function buildMetadata(sample) {
     });
 }
 
-// Initialize page with default plot
-init()
-
-function optionChanged(newSample) {
-    buildChart(newSample)
-    buildMetadata(newSample)
-}
-
 function buildChart(sample) {
     d3.json("samples.json").then((data) => {
         var samples = data.samples;
         var resultArray = samples.filter(
-            (sampleobject) => sampleobject.id == sample);
+            sampleobject => sampleobject.id == sample);
         var result = resultArray[0]
 
-        let ids = sample_data.otu_ids;
-        let labels = sample_data.otu_labels;
-        let values = sample_data.sample_values;
+        var ids = result.otu_ids;
+        var labels = result.otu_labels;
+        var values = result.sample_values;
 
         // Build bar chart
 
@@ -68,6 +47,7 @@ function buildChart(sample) {
 
         let layout = {
             title: 'Top Ten OTUs Found',
+            margin: {t: 30, l: 150}
         };
 
         Plotly.newPlot('bar', data0, layout);
@@ -94,6 +74,7 @@ function buildChart(sample) {
 
         Plotly.newPlot("bubble", data1, bubble_layout);
     });
+
 
 
 
@@ -134,3 +115,24 @@ let gauge_layout = {
 Plotly.newPlot("gauge", gauge_data, gauge_layout);
     
 }
+
+// Get data into inspector console
+function init() {
+    let dropdown = d3.select('#SelDataset');
+    d3.json("samples.json").then(function (data) {
+        console.log("samples.json", data);
+        data.names.forEach((name) => {
+            dropdown.append('option').text(name).property('value', name);
+        });
+        const firstSample = data.names[0];
+        buildChart(firstSample);
+        buildMetadata(firstSample);
+    });
+}
+
+function optionChanged(newSample) {
+    buildChart(newSample)
+    buildMetadata(newSample)
+}
+
+init()
