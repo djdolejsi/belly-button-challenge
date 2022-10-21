@@ -2,7 +2,7 @@
 function init() {
     let dropdown = d3.select('#SelDataset');
     d3.json("samples.json").then(function (data) {
-        console.log("sample.json", data);
+        console.log("samples.json", data);
         data.names.forEach((name) => {
             dropdown.append('option').text(name).property('value', name);
         });
@@ -102,8 +102,8 @@ function buildChart(sample) {
 let gauge_data = [
     {
         domain: { x: [0, 5], y: [0, 1] },
-        value: subject.wfreq,
-        text: subject.wfreq,
+        value: sample_data.wfreq,
+        text: sample_data.wfreq,
         type: 'indicator',
         mode: 'gauge+number',
         delta: { reference: 10 },
