@@ -118,13 +118,13 @@ function buildChart(sample) {
 
 // Get data into inspector console
 function init() {
-    let dropdown = d3.select('#SelDataset');
-    d3.json("samples.json").then(function (data) {
-        console.log("samples.json", data);
-        data.names.forEach((name) => {
-            dropdown.append('option').text(name).property('value', name);
+    var selector = d3.select('#SelDataset');
+    d3.json("samples.json").then((data) => {
+        var sampleNames = data.names;
+        sampleNames.forEach((sample) => {
+            selector.append('option').text(sample).property('value', sample);
         });
-        const firstSample = data.names[0];
+        const firstSample = sampleNames[0];
         buildChart(firstSample);
         buildMetadata(firstSample);
     });
