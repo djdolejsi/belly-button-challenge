@@ -74,7 +74,7 @@ function buildChart(sample) {
 
         Plotly.newPlot("bubble", data1, bubble_layout);
     });
-
+}
 
 
 
