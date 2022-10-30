@@ -35,8 +35,7 @@ function buildChart(sample) {
 
          // Build bubble chart
 
-        let trace1 = [
-        {
+        let trace1 = {
             x: ids,
             y: values,
             text: labels,
@@ -45,8 +44,7 @@ function buildChart(sample) {
                 color: ids,
                 size: values,
             }
-        }
-        ];
+        };
 
         let data1 = [trace1];
 
@@ -60,15 +58,13 @@ function buildChart(sample) {
         
         // Build bar chart
 
-        let trace = [
-        {
+        let trace = {
             y: ids.slice(0, 10).map(otuID => 'OTU ${otuID}').reverse(),
             x: values.slice(0, 10).reverse(),
             text: labels.slice(0, 10).reverse(),
             type: 'bar',
             orientation: 'h'
-        }
-        ];
+        };
 
         let data0 = [trace];
 
