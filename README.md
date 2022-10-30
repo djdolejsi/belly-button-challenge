@@ -16,6 +16,8 @@ The dataset reveals that a small handful of microbial species (also called opera
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c. Use otu_labels as the hovertext for the chart.
 
+![image](https://user-images.githubusercontent.com/105513598/198894828-fe007233-fbcd-43d8-9ac9-b3d31c5a0032.png)
+
 3. Create a bubble chart that displays each sample.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a.Use otu_ids for the x values.
@@ -28,8 +30,14 @@ The dataset reveals that a small handful of microbial species (also called opera
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e. Use otu_labels for the text values.
 
+![image](https://user-images.githubusercontent.com/105513598/198894851-70db259f-cafb-4e05-8842-465c565dc480.png)
+
 4. Display the sample metadata, i.e., an individual's demographic information.
 
 5. Display each key-value pair from the metadata JSON object somewhere on the page.
 
+![image](https://user-images.githubusercontent.com/105513598/198894871-860b757a-a2ce-4931-b85d-93a02916cded.png)
+
 6. Update all the plots when a new sample is selected. Additionally, you are welcome to create any layout that you would like for your dashboard. An example dashboard is shown as follows:
+
+![image](https://user-images.githubusercontent.com/105513598/198894900-3c42afaa-9c4c-4dd2-89a5-55375070bc46.png)
