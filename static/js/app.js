@@ -23,7 +23,7 @@ function buildMetadata(sample) {
 }
 
 function buildChart(sample) {
-    d3.json("samples.json").then((data) => {
+d3.json("samples.json").then((data) => {
         var samples = data.samples;
         var resultArray = samples.filter(
             sampleobject => sampleobject.id == sample);
@@ -81,21 +81,38 @@ function buildChart(sample) {
 
 // Get data into inspector console
 function init() {
-    var selector = d3.select('#SelDataset');
+    // Grab a reference to the dropdown select element
+    var selector = d3.select("#selDataset");
+    
+    // Use the list of sample names to populate the select options
     d3.json("samples.json").then((data) => {
-        var sampleNames = data.names;
-        sampleNames.forEach((sample) => {
-            selector.append('option').text(sample).property('value', sample);
-        });
-        const firstSample = sampleNames[0];
-        buildChart(firstSample);
-        buildMetadata(firstSample);
+      var sampleNames = data.names;
+      sampleNames.forEach((sample) => {
+        selector
+          .append("option")
+          .text(sample)
+          .property("value", sample);
+      });
+    
+      // Use the first sample from the list to build the initial plots
+      const firstSample = sampleNames[0];
+      buildMetadata(firstSample);
+      buildCharts(firstSample);
+      buildGaugeChart(firstSample)
+    
+    
     });
-}
-
-function optionChanged(newSample) {
-    buildChart(newSample)
-    buildMetadata(newSample)
-}
-
-init()
+    }
+    
+    function optionChanged(newSample) {
+    // Get new data each time a new sample is selected
+    buildMetadata(newSample);
+    buildCharts(newSample);
+    buildGaugeChart(newSample)
+    
+    }
+    
+    
+    
+    // Initialize the dashboard
+    init();
