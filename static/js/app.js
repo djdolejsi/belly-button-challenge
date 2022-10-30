@@ -22,6 +22,8 @@ function buildMetadata(sample) {
     });
 }
 
+// Start to build bar and bubble chart
+
 function buildCharts(sample) {
 
     // Use `d3.json` to fetch the sample data for the plots
@@ -36,7 +38,7 @@ function buildCharts(sample) {
       var values = result.sample_values;
     
     
-    //================ Build a BUBBLE Chart=================// 
+    // Build a Bubble Chart 
     
     
       var layout0 = {
@@ -60,7 +62,7 @@ function buildCharts(sample) {
     
       Plotly.newPlot("bubble", data0, layout0);
     
-    //===============  Build a BAR Chart=======================//
+    // Build a Bar Chart
     
       var trace1 = {
           y:ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse(),
