@@ -34,52 +34,53 @@ function buildCharts(sample) {
       var ids = result.otu_ids;
       var labels = result.otu_labels;
       var values = result.sample_values;
-
-         // Build bubble chart
-
-        var trace1 = {
-            x: ids,
-            y: values,
-            text: labels,
-            mode: 'markers',
-            marker: {
-                color: ids,
-                size: values,
+    
+    
+    //================ Build a BUBBLE Chart=================// 
+    
+    
+      var layout0 = {
+        margin: { t: 0 },
+        xaxis: { title: "OTU ID" },
+        hovermode: "closest",
+        };
+    
+        var trace0 =  {
+          x: ids,
+          y: values,
+          text: labels,
+          mode: "markers",
+          marker: {
+            color: ids,
+            size: values,
             }
         };
 
-        var data1 = [trace1];
-
-        var bubble_layout = {
-            xaxis: { title: "OTU ID" },
-            hovermode: 'closest',
-            margin: {t:0}
+        var data0 = [trace0];
+    
+      Plotly.newPlot("bubble", data0, layout0);
+    
+    //===============  Build a BAR Chart=======================//
+    
+      var trace1 = {
+          y:ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse(),
+          x:values.slice(0,10).reverse(),
+          text:labels.slice(0,10).reverse(),
+          type:"bar",
+          orientation:"h"
+    
         };
 
-        Plotly.newPlot("bubble", data1, bubble_layout);
-        
-        // Build bar chart
-
-        var trace = {
-            y: ids.slice(0, 10).map(otuID => 'OTU ${otuID}').reverse(),
-            x: values.slice(0, 10).reverse(),
-            text: labels.slice(0, 10).reverse(),
-            type: 'bar',
-            orientation: 'h'
-        };
-
-        var data0 = [trace];
-
-        var layout = {
-            title: 'Top Ten OTUs Found',
-            margin: {t: 30, l: 150}
-        };
-
-        Plotly.newPlot('bar', data0, layout);
-
-       
+      var data1 = [trace1];  
+    
+      var layout1 = {
+        title: "Top 10 Bacteria Cultures Found",
+        margin: { t: 30, l: 150 }
+      };
+    
+      Plotly.newPlot("bar", data1, layout1);
     });
-}
+    }
 
 // Get data into inspector console
 function init() {
