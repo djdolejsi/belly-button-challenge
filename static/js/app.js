@@ -38,16 +38,17 @@ function buildCharts(sample) {
       var values = result.sample_values;
     
     
-    // Build a Bubble Chart 
+    // Build a BUBBLE Chart 
     
     
-      var layout0 = {
+      var LayoutBubble = {
         margin: { t: 0 },
         xaxis: { title: "OTU ID" },
         hovermode: "closest",
         };
     
-        var trace0 =  {
+        var DataBubble = [ 
+        {
           x: ids,
           y: values,
           text: labels,
@@ -56,31 +57,32 @@ function buildCharts(sample) {
             color: ids,
             size: values,
             }
-        };
-
-        var data0 = [trace0];
+        }
+      ];
     
-      Plotly.newPlot("bubble", data0, layout0);
+      Plotly.newPlot("bubble", DataBubble, LayoutBubble);
     
-    // Build a Bar Chart
     
-      var trace1 = {
+    
+    // Build a BAR Chart
+     
+      var bar_data =[
+        {
           y:ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse(),
           x:values.slice(0,10).reverse(),
           text:labels.slice(0,10).reverse(),
           type:"bar",
           orientation:"h"
     
-        };
-
-      var data1 = [trace1];  
+        }
+      ];
     
-      var layout1 = {
+      var barLayout = {
         title: "Top 10 Bacteria Cultures Found",
         margin: { t: 30, l: 150 }
       };
     
-      Plotly.newPlot("bar", data1, layout1);
+      Plotly.newPlot("bar", bar_data, barLayout);
     });
     }
 
