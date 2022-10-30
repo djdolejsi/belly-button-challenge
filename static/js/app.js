@@ -35,7 +35,7 @@ function buildChart(sample) {
 
          // Build bubble chart
 
-        let trace1 = {
+        var trace1 = {
             x: ids,
             y: values,
             text: labels,
@@ -46,9 +46,9 @@ function buildChart(sample) {
             }
         };
 
-        let data1 = [trace1];
+        var data1 = [trace1];
 
-        let bubble_layout = {
+        var bubble_layout = {
             xaxis: { title: "OTU ID" },
             hovermode: 'closest',
             margin: {t:0}
@@ -58,7 +58,7 @@ function buildChart(sample) {
         
         // Build bar chart
 
-        let trace = {
+        var trace = {
             y: ids.slice(0, 10).map(otuID => 'OTU ${otuID}').reverse(),
             x: values.slice(0, 10).reverse(),
             text: labels.slice(0, 10).reverse(),
@@ -66,9 +66,9 @@ function buildChart(sample) {
             orientation: 'h'
         };
 
-        let data0 = [trace];
+        var data0 = [trace];
 
-        let layout = {
+        var layout = {
             title: 'Top Ten OTUs Found',
             margin: {t: 30, l: 150}
         };
